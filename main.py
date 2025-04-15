@@ -3,7 +3,7 @@ import os
 
 # import functions
 from utils.test import test_dataloader
-from src.run_model import run
+from src.run_continual import run
 from src.run_viz import viz_segmentation
 
 
@@ -42,13 +42,10 @@ if __name__ == "__main__":
     parser.add_argument("--hf_path", type=str, default='vit_base_patch14_dinov2.lvd142m', help="Huggingface model path")
     parser.add_argument("--milestones", type=str, default="5", help="Scheduler milestones as a comma-separated string")
     parser.add_argument("--gamma", type=float, default=0.2, help="Scheduler gamma value")
-    parser.add_argument("--wandb_entity", type=str, default="private", help="WandB entity")
-    parser.add_argument("--wandb_api_key", type=str, default="private", help="WandB API key")
-    parser.add_argument("--wandb_name", type=str, default="default", help="WandB run name for logging")
     parser.add_argument('--data_dir', type=str, default='data/', help='Data directory where to store/find the dataset.')
     parser.add_argument("--run_type", default="kdad", choices=['kdad', 'test_data', 'simplenet', 'viz_attn', 'general_ad', 'viz_segmentation'], help="The files that have to be run.")
     parser.add_argument("--model_type", default="ViT", choices=['ViT', 'MLP'], help="The type of model to be trained for KDAD.")
-    parser.add_argument("--image_size", type=int, default=224, help="Input size of ViT images")
+    parser.add_argument("--image_size", type=int, default=336, help="Input size of ViT images")
     parser.add_argument("--layers_to_extract_from", type=str, default="2,3", help="Layers to extract from as a comma-separated string")
     parser.add_argument("--wd", type=float, default=0.00001, help="Weight decay for the discriminator")
     parser.add_argument("--dsc_layers", type=int, default=1, help="Number of layers for the discriminator")
@@ -70,6 +67,12 @@ if __name__ == "__main__":
     parser.add_argument("--shots", type=int, default=-1, help="number of shots for few-shot setting.")
     parser.add_argument("--val_monitor", default="image_auroc", choices=['image_auroc', 'pixel_auroc'], help="Validate based on image level score or pixel level score.")
     parser.add_argument("--log_pixel_metrics", type=int, default=0, choices=[0, 1], help="If the dataset includes segmentation masks than 1 else 0.")
+    parser.add_argument("--phase", type=str, choices=["base", "continual"], help="Choose training phase: base or continual")
+    parser.add_argument("--wandb_project", type=str, default="continual-general-ad", help="WandB project name")
+    parser.add_argument("--base_epochs", type=int, default=50, help="Number of epochs for base phase training")
+    parser.add_argument("--inc_epochs", type=int, default=20, help="Number of epochs for incremental continual learning")
+    parser.add_argument("--task_json_name", type=str, default="5classes_tasks", help="Name of the task JSON file (e.g., 5classes_tasks)")
+
 
     # Parse arguments
     args = parser.parse_args()

@@ -5,6 +5,7 @@ import sys
 from PIL import Image
 import scipy.io as sio
 import numpy as np
+import json
 
 # torch
 import torch
@@ -383,5 +384,111 @@ def prepare_loader(image_size, path, dataset_name, class_name, batch_size, test_
         train_loader = data.DataLoader(train_set, batch_size=batch_size, shuffle=True, drop_last=True, pin_memory=True, num_workers=num_workers)
     
     test_loader = data.DataLoader(test_set, batch_size=test_batch_size, shuffle=False, drop_last=False, num_workers=num_workers)
+
+    return train_loader, test_loader
+
+
+class JSONDataset(data.Dataset):
+    dataset_root_map = {
+        "continual_ad": "/datasets/MegaInspection/megainspection",
+        "mvtec_anomaly_detection": "/datasets/MegaInspection/non_megainspection/MVTec",
+        "VisA_20220922": "/datasets/MegaInspection/non_megainspection/VisA",
+        "Real-IAD-512": "/datasets/MegaInspection/non_megainspection/Real-IAD",
+        "VIADUCT": "/datasets/MegaInspection/non_megainspection/VIADUCT",
+        "BTAD": "/datasets/MegaInspection/non_megainspection/BTAD",
+        "MPDD": "/datasets/MegaInspection/non_megainspection/MPDD"
+    }
+
+    def resolve_path(self, relative_path):
+        if not relative_path:
+            return None
+        if os.path.isabs(relative_path):
+            return relative_path
+        parts = relative_path.split("/", 1)
+        if len(parts) != 2:
+            return None
+        prefix, sub_path = parts
+        root = self.dataset_root_map.get(prefix, "")
+        return os.path.normpath(os.path.join(root, sub_path))
+    
+    def __init__(self, json_data, transform, mask_transform=None):
+        self.samples = []
+        self.transform = transform
+        self.mask_transform = mask_transform
+        
+        for cls_name, samples in json_data.items():
+            for sample in samples:
+                img_path = self.resolve_path(sample["img_path"])
+                if sample["mask_path"]:
+                    mask_path = self.resolve_path(sample["mask_path"])
+                else:
+                    mask_path = None
+                anomaly = sample["anomaly"]
+                self.samples.append((img_path, mask_path, anomaly))
+
+    def __len__(self):
+        return len(self.samples)
+
+    def __getitem__(self, idx):
+        img_path, mask_path, anomaly = self.samples[idx]
+        image = Image.open(img_path).convert("RGB")
+        image = self.transform(image)
+
+        if mask_path:
+            mask = Image.open(mask_path).convert("RGB")
+            mask = self.mask_transform(mask)
+            mask = 1.0 - torch.all(mask == 0, dim=0).float()
+        else:
+            C, W, H = image.shape
+            mask = torch.zeros((W, H))
+
+        return image, anomaly, mask
+
+def prepare_loader_from_json(json_path, image_size, batch_size, test_batch_size, 
+                             num_workers, task_idx=None):
+    transform = transforms.Compose([
+        transforms.Resize((image_size, image_size), Image.LANCZOS),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
+    ])
+
+    mask_transform = transforms.Compose([
+        transforms.Resize((image_size, image_size), Image.LANCZOS),
+        transforms.ToTensor()
+    ])
+    
+    with open(json_path, "r") as f:
+            data_json = json.load(f)
+    
+    if not json_path.split("/")[-1].startswith("base"):
+        sub_data_idx = f"task_{task_idx+1}"
+        data_json = data_json[sub_data_idx]
+
+
+    full_train_dataset = JSONDataset(data_json["train"], transform, mask_transform)
+
+    total_size = len(full_train_dataset)
+    split_idx = int(total_size * 0.8)
+    train_subset, val_subset = torch.utils.data.random_split(
+        full_train_dataset, 
+        [split_idx, total_size - split_idx], 
+        generator=torch.Generator().manual_seed(42)
+    )
+
+    drop_last_flag = True if len(train_subset) >= batch_size else False
+    train_loader = data.DataLoader(
+        train_subset, 
+        batch_size=batch_size, 
+        shuffle=True, 
+        num_workers=num_workers, 
+        pin_memory=True,
+        drop_last=drop_last_flag,
+    )
+    test_loader = data.DataLoader(
+        val_subset, 
+        batch_size=test_batch_size, 
+        shuffle=False, 
+        num_workers=num_workers
+    )
 
     return train_loader, test_loader

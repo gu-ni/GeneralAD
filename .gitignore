@@ -1,0 +1,5 @@
+.DS_Store
+src/results/
+src/__pycache__/
+src/wandb/
+utils/__pycache__/
