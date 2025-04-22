@@ -8,13 +8,13 @@ from pytorch_lightning import Trainer, seed_everything
 from pytorch_lightning.callbacks import ModelCheckpoint, LearningRateMonitor
 from pytorch_lightning.loggers import WandbLogger
 
-from .general_ad import General_AD  # General_AD 모델
-from .load_data import prepare_loader_from_json  # JSON 기반 데이터 로더 구현 필요
+from .general_ad import General_AD
+from .load_data import prepare_loader_from_json
 import wandb
 
 def run(args):
     # 기본 설정
-    wandb.login()
+    # wandb.login()
     
     # 디바이스 확인
     if not torch.cuda.is_available():
@@ -28,17 +28,15 @@ def run(args):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
-    base_ckpt_path = os.path.join(args.data_dir, "base_checkpoint.ckpt")
-
     if args.phase == "base":
         print("[BASE] Training base model...")
-        base_json = os.path.join("/workspace/meta_files", "base_classes.json")
-        train_loader, val_loader = prepare_loader_from_json(
-            json_path=base_json,
+        train_loader = prepare_loader_from_json(
+            json_path=args.json_path,
             image_size=args.image_size,
             batch_size=args.batch_size,
-            test_batch_size=args.test_batch_size,
-            num_workers=args.num_workers
+            num_workers=args.num_workers,
+            task_id=None,
+            train=True,
         )
 
         model = General_AD(
@@ -48,7 +46,7 @@ def run(args):
             layers_to_extract_from=args.layers_to_extract_from,
             hidden_dim=args.hidden_dim,
             wd=args.wd,
-            epochs=args.base_epochs,
+            epochs=args.epochs,
             noise_std=args.noise_std,
             dsc_layers=args.dsc_layers,
             dsc_heads=args.dsc_heads,
@@ -63,34 +61,34 @@ def run(args):
             smoothing_radius=args.smoothing_radius
         )
 
-        wandb.init(project=args.wandb_project, name="base_training")
-        wandb_logger = WandbLogger()
+        # wandb.init(project=args.wandb_project, name="base_training")
+        # wandb_logger = WandbLogger()
 
         trainer = Trainer(
             log_every_n_steps=args.log_every_n_steps,
-            logger=wandb_logger,
+            # logger=wandb_logger,
             accelerator="gpu",
             devices=1,
-            max_epochs=args.base_epochs,
+            max_epochs=args.epochs,
             callbacks=[
                 ModelCheckpoint(
-                    save_weights_only=True,
-                    mode="max", 
-                    monitor=f"val_{args.val_monitor}", 
-                    dirpath=args.data_dir, 
-                    filename="base_checkpoint",
+                    save_top_k=0,
+                    save_last=True
                 ),
                 LearningRateMonitor("epoch")
             ],
             enable_progress_bar=True
         )
-        trainer.fit(model, train_loader, val_loader)
-        torch.save(model.state_dict(), base_ckpt_path)
+        trainer.fit(model, train_loader)
+        
+        save_path = os.path.join(args.output_dir, "base.ckpt")
+        os.makedirs(args.output_dir, exist_ok=True)
+        torch.save(model.state_dict(), save_path)
         print("[BASE] Training completed. Exiting.")
         return
 
     elif args.phase == "continual":
-        print("[BASE] Loading saved base model checkpoint...")
+        print("[CONTINUAL] Loading saved base model checkpoint...")
         model = General_AD(
             lr=args.lr,
             lr_decay_factor=args.lr_decay_factor,
@@ -98,7 +96,7 @@ def run(args):
             layers_to_extract_from=args.layers_to_extract_from,
             hidden_dim=args.hidden_dim,
             wd=args.wd,
-            epochs=args.inc_epochs,  # 바로 inc_epochs 설정
+            epochs=args.epochs,
             noise_std=args.noise_std,
             dsc_layers=args.dsc_layers,
             dsc_heads=args.dsc_heads,
@@ -112,60 +110,61 @@ def run(args):
             smoothing_sigma=args.smoothing_sigma,
             smoothing_radius=args.smoothing_radius
         )
-        model.load_state_dict(torch.load(base_ckpt_path))
+        
+        pretrained_path = (
+            f"/workspace/MegaInspection/GeneralAD/outputs/{args.scenario}/base/base.ckpt" if args.task_id == 1
+            else os.path.join(args.output_dir, f"task{args.task_id - 1}.ckpt")
+        )
+        model.load_state_dict(torch.load(pretrained_path))
 
         # 인크리멘탈 클래스 학습 루프
-        if "except_continual_ad" in args.task_json_name:
+        if "except_continual_ad" in args.json_path:
             num_all_tasks = 30
         else:
             num_all_tasks = 60
-        num_classes = re.match(r'\d+', args.task_json_name).group()
+        num_classes = re.match(r'\d+', args.json_path).group()
         num_tasks = num_all_tasks // int(num_classes)
-        print(f"[INCREMENTAL] Number of classes: {num_classes}")
-        print(f"[INCREMENTAL] Number of all tasks: {num_all_tasks}")
-        print(f"[INCREMENTAL] Number of each tasks: {num_tasks}")
+        print(f"[CONTINUAL] Number of classes: {num_classes}")
+        print(f"[CONTINUAL] Number of all tasks: {num_all_tasks}")
+        print(f"[CONTINUAL] Number of each tasks: {num_tasks}")
         
-        for task_idx in range(num_tasks):
-            task_json = os.path.join("/workspace/meta_files", f"{args.task_json_name}.json")
-            print(f"[TASK {task_idx+1}] Loading from {task_json}")
-            train_loader, val_loader = prepare_loader_from_json(
-                json_path=task_json,
-                image_size=args.image_size,
-                batch_size=args.batch_size,
-                test_batch_size=args.test_batch_size,
-                num_workers=args.num_workers,
-                task_idx=task_idx,
-            )
+        train_loader = prepare_loader_from_json(
+            json_path=args.json_path,
+            image_size=args.image_size,
+            batch_size=args.batch_size,
+            num_workers=args.num_workers,
+            task_id=args.task_id,
+            train=True,
+        )
 
-            wandb.init(project=args.wandb_project, name=f"task_{task_idx+1}", reinit=True)
-            wandb_logger = WandbLogger()
+        # wandb.init(project=args.wandb_project, name=f"task_{args.task_id+1}", reinit=True)
+        # wandb_logger = WandbLogger()
 
-            model.hparams.epochs = args.inc_epochs
+        # model.hparams.epochs = args.epochs
 
-            trainer = Trainer(
-                log_every_n_steps=args.log_every_n_steps,
-                logger=wandb_logger,
-                accelerator="gpu",
-                devices=1,
-                max_epochs=args.inc_epochs,
-                callbacks=[
-                    ModelCheckpoint(
-                        save_weights_only=True, 
-                        mode="max", 
-                        monitor=f"val_{args.val_monitor}",
-                        dirpath=os.path.join(args.data_dir, "continual_checkpoints"),
-                        save_top_k=0,
-                        save_last=True,
-                    ),
-                    LearningRateMonitor("epoch")
-                ],
-                enable_progress_bar=True
-            )
+        trainer = Trainer(
+            log_every_n_steps=args.log_every_n_steps,
+            # logger=wandb_logger,
+            accelerator="gpu",
+            devices=1,
+            max_epochs=args.epochs,
+            callbacks=[
+                ModelCheckpoint(
+                    save_top_k=0,
+                    save_last=True
+                ),
+                LearningRateMonitor("epoch")
+            ],
+            enable_progress_bar=True
+        )
 
-            trainer.fit(model, train_loader, val_loader)
-            trainer.test(model, val_loader)
+        trainer.fit(model, train_loader)
+        
+        save_path = os.path.join(args.output_dir, f"task{args.task_id}.ckpt")
+        os.makedirs(args.output_dir, exist_ok=True)
+        torch.save(model.state_dict(), save_path)
 
-        wandb.finish()
+        # wandb.finish()
 
     else:
         print("Invalid phase selected. Use --phase base or --phase continual")

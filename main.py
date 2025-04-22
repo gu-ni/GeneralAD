@@ -1,5 +1,6 @@
 import argparse
 import os
+import re
 
 # import functions
 from utils.test import test_dataloader
@@ -26,18 +27,17 @@ if __name__ == "__main__":
     parser.add_argument("--epochs", type=int, default=10, help="Number of epochs")
     parser.add_argument("--log_every_n_steps", type=int, default=5, help="Log frequency")
     parser.add_argument("--batch_size", type=int, default=128, help="Batch size for training")
-    parser.add_argument("--test_batch_size", type=int, default=128, help="Batch size for testing")
     parser.add_argument("--num_workers", type=int, default=2, help="Number of workers for data loading")
     parser.add_argument("--embed_dim", type=int, default=768, help="Embedding dimension")
-    parser.add_argument("--hidden_dim", type=int, default=512, help="Hidden dimension")
+    parser.add_argument("--hidden_dim", type=int, default=2048, help="Hidden dimension")
     parser.add_argument("--num_heads", type=int, default=8, help="Number of heads")
     parser.add_argument("--num_layers", type=int, default=4, help="Number of layers")
     parser.add_argument("--patch_size", type=int, default=14, help="Size of each patch")
     parser.add_argument("--num_channels", type=int, default=3, help="Number of channels")
     parser.add_argument("--num_patches", type=int, default=256, help="Number of patches")
     parser.add_argument("--dropout", type=float, default=0.2, help="Dropout rate")
-    parser.add_argument("--lr", type=float, default=0.1, help="Learning rate")
-    parser.add_argument("--lr_decay_factor", type=float, default=0.1, help="Learning rate decay factor for cosine annealing")
+    parser.add_argument("--lr", type=float, default=0.0005, help="Learning rate")
+    parser.add_argument("--lr_decay_factor", type=float, default=0.2, help="Learning rate decay factor for cosine annealing")
     parser.add_argument("--lr_adaptor", type=float, default=0.0001, help="Learning rate")
     parser.add_argument("--hf_path", type=str, default='vit_base_patch14_dinov2.lvd142m', help="Huggingface model path")
     parser.add_argument("--milestones", type=str, default="5", help="Scheduler milestones as a comma-separated string")
@@ -46,12 +46,12 @@ if __name__ == "__main__":
     parser.add_argument("--run_type", default="kdad", choices=['kdad', 'test_data', 'simplenet', 'viz_attn', 'general_ad', 'viz_segmentation'], help="The files that have to be run.")
     parser.add_argument("--model_type", default="ViT", choices=['ViT', 'MLP'], help="The type of model to be trained for KDAD.")
     parser.add_argument("--image_size", type=int, default=336, help="Input size of ViT images")
-    parser.add_argument("--layers_to_extract_from", type=str, default="2,3", help="Layers to extract from as a comma-separated string")
+    parser.add_argument("--layers_to_extract_from", type=str, default="24", help="Layers to extract from as a comma-separated string")
     parser.add_argument("--wd", type=float, default=0.00001, help="Weight decay for the discriminator")
     parser.add_argument("--dsc_layers", type=int, default=1, help="Number of layers for the discriminator")
-    parser.add_argument("--dsc_heads", type=int, default=12, help="Number of heads for the discriminator")
-    parser.add_argument("--dsc_dropout", type=float, default=0.0, help="Dropout rate for the discriminator")
-    parser.add_argument("--noise_std", type=float, default=0.015, help="Standard deviation of the noise to create fake samples for the discriminator")
+    parser.add_argument("--dsc_heads", type=int, default=4, help="Number of heads for the discriminator")
+    parser.add_argument("--dsc_dropout", type=float, default=0.1, help="Dropout rate for the discriminator")
+    parser.add_argument("--noise_std", type=float, default=0.25, help="Standard deviation of the noise to create fake samples for the discriminator")
     parser.add_argument("--dsc_type", default="mlp", choices=['mlp', 'transformer'], help="The type of model you want for the discriminator.")
     parser.add_argument('--no_avg_pooling', action='store_false', help='Set to disable average pooling. Defaults to True.')
     parser.add_argument("--pool_size", type=int, default=3, help="Size of local neighboorhood to aggregate over.")
@@ -60,24 +60,43 @@ if __name__ == "__main__":
     parser.add_argument("--checkpoint_dir", type=str, default="lightning_logs/dir", help="The directory in which the model checkpoints are stored, printed after a training run.")
     parser.add_argument("--blob_size_factor", type=float, default=1.0, help="Size of the blob")
     parser.add_argument("--sigma_blob_noise", type=float, default=0.4, help="magnitude of the standard deviation for the probability distribution over the grid for creating the starting patch of the blob.")
-    parser.add_argument("--fake_feature_type", type=str, default="noise_all", help="The type of fake featuers to create for general ad.")
+    parser.add_argument("--fake_feature_type", type=str, default="random", help="The type of fake featuers to create for general ad.")
     parser.add_argument("--top_k", type=int, default=10, help="number of patches to use to determine if an image is anomalous.")
-    parser.add_argument("--smoothing_sigma", type=float, default=4, help="Standard deviation of the smoothing to create the segmentation map.")
-    parser.add_argument("--smoothing_radius", type=int, default=2, help="Standard deviation of the smoothing to create the segmentation map.")
+    parser.add_argument("--smoothing_sigma", type=float, default=16, help="Standard deviation of the smoothing to create the segmentation map.")
+    parser.add_argument("--smoothing_radius", type=int, default=18, help="Standard deviation of the smoothing to create the segmentation map.")
     parser.add_argument("--shots", type=int, default=-1, help="number of shots for few-shot setting.")
     parser.add_argument("--val_monitor", default="image_auroc", choices=['image_auroc', 'pixel_auroc'], help="Validate based on image level score or pixel level score.")
-    parser.add_argument("--log_pixel_metrics", type=int, default=0, choices=[0, 1], help="If the dataset includes segmentation masks than 1 else 0.")
-    parser.add_argument("--phase", type=str, choices=["base", "continual"], help="Choose training phase: base or continual")
+    parser.add_argument("--log_pixel_metrics", type=int, default=1, choices=[0, 1], help="If the dataset includes segmentation masks than 1 else 0.")
+
     parser.add_argument("--wandb_project", type=str, default="continual-general-ad", help="WandB project name")
-    parser.add_argument("--base_epochs", type=int, default=50, help="Number of epochs for base phase training")
-    parser.add_argument("--inc_epochs", type=int, default=20, help="Number of epochs for incremental continual learning")
-    parser.add_argument("--task_json_name", type=str, default="5classes_tasks", help="Name of the task JSON file (e.g., 5classes_tasks)")
+    parser.add_argument("--task_id", type=int, default=0, help="Task ID for the current task (0 for base task)")
+    parser.add_argument("--json_path", type=str, default="5classes_tasks", help="Name of the task JSON file (e.g., 5classes_tasks)")
 
 
     # Parse arguments
     args = parser.parse_args()
     args.milestones = [int(x) for x in args.milestones.split(',')]
     args.layers_to_extract_from = [int(x) for x in args.layers_to_extract_from.split(',')]
+    if args.task_id == 0:
+        args.phase = "base"
+    else:
+        args.phase = "continual"
+    
+    if args.json_path.endswith("except_mvtec_visa"):
+        scenario = "scenario_2"
+    elif args.json_path.endswith("except_continual_ad"):
+        scenario = "scenario_3"
+    else:
+        scenario = "scenario_1"
+    args.scenario = scenario
+    
+    if args.phase == "base":
+        args.output_dir = f"/workspace/MegaInspection/GeneralAD/outputs/{scenario}/base"
+    elif args.phase == "continual":
+        num_classes_per_task = int(re.match(r'\d+', args.json_path).group())
+        args.num_classes_per_task = num_classes_per_task
+        args.output_dir = f"/workspace/MegaInspection/GeneralAD/outputs/{scenario}/{num_classes_per_task}classes_tasks"
+        
 
     # Run the main function
     main(args)

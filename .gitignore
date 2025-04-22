@@ -3,3 +3,6 @@ src/results/
 src/__pycache__/
 src/wandb/
 utils/__pycache__/
+outputs/
+src/lightning_logs/
+src/outputs/

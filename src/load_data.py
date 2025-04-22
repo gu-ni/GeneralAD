@@ -411,20 +411,31 @@ class JSONDataset(data.Dataset):
         root = self.dataset_root_map.get(prefix, "")
         return os.path.normpath(os.path.join(root, sub_path))
     
-    def __init__(self, json_data, transform, mask_transform=None):
+    def __init__(self, json_data, transform, mask_transform=None, train=True):
         self.samples = []
         self.transform = transform
         self.mask_transform = mask_transform
         
+        
+        
+        
+        self.samples = []
+        self.num_all_samples = 0
         for cls_name, samples in json_data.items():
             for sample in samples:
+                self.num_all_samples += 1
                 img_path = self.resolve_path(sample["img_path"])
-                if sample["mask_path"]:
-                    mask_path = self.resolve_path(sample["mask_path"])
+                anomaly = sample.get("anomaly", 0)
+
+                if train:
+                    if anomaly != 0:
+                        continue  # ⛔ skip abnormal sample during training
+                    mask_path = ""  # not used
                 else:
-                    mask_path = None
-                anomaly = sample["anomaly"]
+                    mask_path = self.resolve_path(sample["mask_path"]) if sample.get("mask_path") else ""
+
                 self.samples.append((img_path, mask_path, anomaly))
+        
 
     def __len__(self):
         return len(self.samples)
@@ -444,8 +455,8 @@ class JSONDataset(data.Dataset):
 
         return image, anomaly, mask
 
-def prepare_loader_from_json(json_path, image_size, batch_size, test_batch_size, 
-                             num_workers, task_idx=None):
+def prepare_loader_from_json(json_path, image_size, batch_size, 
+                             num_workers, task_id=None, train=True):
     transform = transforms.Compose([
         transforms.Resize((image_size, image_size), Image.LANCZOS),
         transforms.ToTensor(),
@@ -457,38 +468,25 @@ def prepare_loader_from_json(json_path, image_size, batch_size, test_batch_size,
         transforms.ToTensor()
     ])
     
+    json_path = os.path.join("/workspace/meta_files", f"{json_path}.json")
     with open(json_path, "r") as f:
             data_json = json.load(f)
     
-    if not json_path.split("/")[-1].startswith("base"):
-        sub_data_idx = f"task_{task_idx+1}"
+    if task_id is not None:
+        sub_data_idx = f"task_{task_id}"
         data_json = data_json[sub_data_idx]
 
 
-    full_train_dataset = JSONDataset(data_json["train"], transform, mask_transform)
+    train_dataset = JSONDataset(data_json["train"], transform, mask_transform, train)
 
-    total_size = len(full_train_dataset)
-    split_idx = int(total_size * 0.8)
-    train_subset, val_subset = torch.utils.data.random_split(
-        full_train_dataset, 
-        [split_idx, total_size - split_idx], 
-        generator=torch.Generator().manual_seed(42)
-    )
-
-    drop_last_flag = True if len(train_subset) >= batch_size else False
+    drop_last_flag = True if len(train_dataset) >= batch_size else False
     train_loader = data.DataLoader(
-        train_subset, 
+        train_dataset, 
         batch_size=batch_size, 
         shuffle=True, 
         num_workers=num_workers, 
         pin_memory=True,
         drop_last=drop_last_flag,
     )
-    test_loader = data.DataLoader(
-        val_subset, 
-        batch_size=test_batch_size, 
-        shuffle=False, 
-        num_workers=num_workers
-    )
 
-    return train_loader, test_loader
+    return train_loader
