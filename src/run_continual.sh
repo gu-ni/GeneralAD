@@ -12,16 +12,16 @@ num_workers=8
 # _except_mvtec_visa
 # _except_continual_ad
 
-JSON_PATH_BASE="base_classes"
+JSON_PATH_BASE="base_classes_except_continual_ad"
 TASK_JSON_GROUPS=(
-    "5classes_tasks" \
-    "10classes_tasks" \
-    "30classes_tasks"
+    "5classes_tasks_except_continual_ad" \
+    "10classes_tasks_except_continual_ad" \
+    "30classes_tasks_except_continual_ad"
 )
 NUM_TASKS_GROUPS=(
-    12 \
     6 \
-    2
+    3 \
+    1
 )
 
 # BASE 학습 (task_id=0)
