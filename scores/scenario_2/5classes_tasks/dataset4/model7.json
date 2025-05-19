@@ -1,0 +1,32 @@
+{
+    "viaduct_12 rotary encoder": {
+        "image_auroc": 0.5157999992370605,
+        "pixel_ap": 0.002199999988079071,
+        "normal_count": 50.0,
+        "anomaly_count": 19.0
+    },
+    "continual_ad_Ruler": {
+        "image_auroc": 0.5507000088691711,
+        "pixel_ap": 0.0017000000225380063,
+        "normal_count": 277.0,
+        "anomaly_count": 490.0
+    },
+    "continual_ad_Flash-drive": {
+        "image_auroc": 0.5041999816894531,
+        "pixel_ap": 0.00839999970048666,
+        "normal_count": 522.0,
+        "anomaly_count": 495.0
+    },
+    "btad_03": {
+        "image_auroc": 0.7093999981880188,
+        "pixel_ap": 0.007199999876320362,
+        "normal_count": 400.0,
+        "anomaly_count": 31.0
+    },
+    "real_iad_tape": {
+        "image_auroc": 0.5530999898910522,
+        "pixel_ap": 0.0012000000569969416,
+        "normal_count": 3647.0,
+        "anomaly_count": 1433.0
+    }
+}

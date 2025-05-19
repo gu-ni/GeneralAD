@@ -1,0 +1,182 @@
+{
+    "viaduct_44 tack": {
+        "image_auroc": 0.328000009059906,
+        "pixel_ap": 0.007000000216066837,
+        "normal_count": 160.0,
+        "anomaly_count": 137.0
+    },
+    "viaduct_47 mains tester": {
+        "image_auroc": 0.4309999942779541,
+        "pixel_ap": 9.999999747378752e-05,
+        "normal_count": 50.0,
+        "anomaly_count": 20.0
+    },
+    "mpdd_metal_plate": {
+        "image_auroc": 0.713699996471405,
+        "pixel_ap": 0.07819999754428864,
+        "normal_count": 26.0,
+        "anomaly_count": 61.0
+    },
+    "btad_01": {
+        "image_auroc": 0.8388000130653381,
+        "pixel_ap": 0.06629999727010727,
+        "normal_count": 21.0,
+        "anomaly_count": 39.0
+    },
+    "viaduct_25 reinforcing sleeve": {
+        "image_auroc": 0.5526999831199646,
+        "pixel_ap": 0.00559999980032444,
+        "normal_count": 50.0,
+        "anomaly_count": 11.0
+    },
+    "mpdd_bracket_white": {
+        "image_auroc": 0.5232999920845032,
+        "pixel_ap": 0.002199999988079071,
+        "normal_count": 30.0,
+        "anomaly_count": 20.0
+    },
+    "viaduct_11 ring cable lug": {
+        "image_auroc": 0.4287000000476837,
+        "pixel_ap": 0.004600000102072954,
+        "normal_count": 140.0,
+        "anomaly_count": 56.0
+    },
+    "viaduct_48 saw blade": {
+        "image_auroc": 0.4950000047683716,
+        "pixel_ap": 0.0003000000142492354,
+        "normal_count": 50.0,
+        "anomaly_count": 20.0
+    },
+    "viaduct_32 bone pliers": {
+        "image_auroc": 0.6319000124931335,
+        "pixel_ap": 0.003800000064074993,
+        "normal_count": 185.0,
+        "anomaly_count": 63.0
+    },
+    "viaduct_38 round pill": {
+        "image_auroc": 0.517300009727478,
+        "pixel_ap": 0.0340999998152256,
+        "normal_count": 50.0,
+        "anomaly_count": 82.0
+    },
+    "viaduct_30 valve handle blue": {
+        "image_auroc": 0.550000011920929,
+        "pixel_ap": 0.0013000000035390258,
+        "normal_count": 50.0,
+        "anomaly_count": 14.0
+    },
+    "viaduct_35 pink tablet": {
+        "image_auroc": 0.45570001006126404,
+        "pixel_ap": 0.03759999945759773,
+        "normal_count": 50.0,
+        "anomaly_count": 60.0
+    },
+    "viaduct_20 tea bag": {
+        "image_auroc": 0.46970000863075256,
+        "pixel_ap": 0.003599999938160181,
+        "normal_count": 140.0,
+        "anomaly_count": 90.0
+    },
+    "viaduct_43 paperclip": {
+        "image_auroc": 0.5378000140190125,
+        "pixel_ap": 0.007899999618530273,
+        "normal_count": 110.0,
+        "anomaly_count": 63.0
+    },
+    "viaduct_16 vibration sensor": {
+        "image_auroc": 0.5550000071525574,
+        "pixel_ap": 0.0019000000320374966,
+        "normal_count": 50.0,
+        "anomaly_count": 20.0
+    },
+    "viaduct_39 self-tapping bolt": {
+        "image_auroc": 0.5457000136375427,
+        "pixel_ap": 0.007799999788403511,
+        "normal_count": 140.0,
+        "anomaly_count": 140.0
+    },
+    "viaduct_27 L-fitting": {
+        "image_auroc": 0.4311999976634979,
+        "pixel_ap": 0.0008999999845400453,
+        "normal_count": 50.0,
+        "anomaly_count": 16.0
+    },
+    "viaduct_17 cherry": {
+        "image_auroc": 0.5903000235557556,
+        "pixel_ap": 0.018200000748038292,
+        "normal_count": 275.0,
+        "anomaly_count": 112.0
+    },
+    "viaduct_08 ethernet connector": {
+        "image_auroc": 0.46799999475479126,
+        "pixel_ap": 0.002400000113993883,
+        "normal_count": 50.0,
+        "anomaly_count": 30.0
+    },
+    "viaduct_31 valve handle red": {
+        "image_auroc": 0.4957999885082245,
+        "pixel_ap": 0.0006000000284984708,
+        "normal_count": 45.0,
+        "anomaly_count": 16.0
+    },
+    "real_iad_wooden_beads": {
+        "image_auroc": 0.5284000039100647,
+        "pixel_ap": 0.005200000014156103,
+        "normal_count": 3311.0,
+        "anomaly_count": 1674.0
+    },
+    "real_iad_eraser": {
+        "image_auroc": 0.5335000157356262,
+        "pixel_ap": 0.004999999888241291,
+        "normal_count": 3567.0,
+        "anomaly_count": 1478.0
+    },
+    "real_iad_audiojack": {
+        "image_auroc": 0.5464000105857849,
+        "pixel_ap": 0.0015999999595806003,
+        "normal_count": 3744.0,
+        "anomaly_count": 1286.0
+    },
+    "real_iad_pcb": {
+        "image_auroc": 0.4754999876022339,
+        "pixel_ap": 0.0008999999845400453,
+        "normal_count": 2711.0,
+        "anomaly_count": 2279.0
+    },
+    "real_iad_rolled_strip_base": {
+        "image_auroc": 0.5194000005722046,
+        "pixel_ap": 0.0013000000035390258,
+        "normal_count": 2515.0,
+        "anomaly_count": 2515.0
+    },
+    "real_iad_u_block": {
+        "image_auroc": 0.5582000017166138,
+        "pixel_ap": 0.0017999999690800905,
+        "normal_count": 3766.0,
+        "anomaly_count": 1204.0
+    },
+    "real_iad_toothbrush": {
+        "image_auroc": 0.47510001063346863,
+        "pixel_ap": 0.01489999983459711,
+        "normal_count": 2968.0,
+        "anomaly_count": 2017.0
+    },
+    "real_iad_usb_adaptor": {
+        "image_auroc": 0.503000020980835,
+        "pixel_ap": 0.0006000000284984708,
+        "normal_count": 3485.0,
+        "anomaly_count": 1510.0
+    },
+    "real_iad_plastic_nut": {
+        "image_auroc": 0.5102999806404114,
+        "pixel_ap": 0.00039999998989515007,
+        "normal_count": 3754.0,
+        "anomaly_count": 1236.0
+    },
+    "real_iad_mounts": {
+        "image_auroc": 0.5083000063896179,
+        "pixel_ap": 0.0013000000035390258,
+        "normal_count": 3702.0,
+        "anomaly_count": 1328.0
+    }
+}

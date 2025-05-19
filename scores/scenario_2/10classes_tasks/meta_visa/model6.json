@@ -1,0 +1,74 @@
+{
+    "candle": {
+        "image_auroc": 0.46239998936653137,
+        "pixel_ap": 0.0017000000225380063,
+        "normal_count": 100.0,
+        "anomaly_count": 100.0
+    },
+    "capsules": {
+        "image_auroc": 0.4717999994754791,
+        "pixel_ap": 0.0052999998442828655,
+        "normal_count": 60.0,
+        "anomaly_count": 100.0
+    },
+    "cashew": {
+        "image_auroc": 0.47119998931884766,
+        "pixel_ap": 0.01080000028014183,
+        "normal_count": 50.0,
+        "anomaly_count": 100.0
+    },
+    "chewinggum": {
+        "image_auroc": 0.43959999084472656,
+        "pixel_ap": 0.0044999998062849045,
+        "normal_count": 50.0,
+        "anomaly_count": 100.0
+    },
+    "fryum": {
+        "image_auroc": 0.5511999726295471,
+        "pixel_ap": 0.032600000500679016,
+        "normal_count": 50.0,
+        "anomaly_count": 100.0
+    },
+    "macaroni1": {
+        "image_auroc": 0.4537000060081482,
+        "pixel_ap": 0.0007999999797903001,
+        "normal_count": 100.0,
+        "anomaly_count": 100.0
+    },
+    "macaroni2": {
+        "image_auroc": 0.5180000066757202,
+        "pixel_ap": 0.0006000000284984708,
+        "normal_count": 100.0,
+        "anomaly_count": 100.0
+    },
+    "pcb1": {
+        "image_auroc": 0.5726000070571899,
+        "pixel_ap": 0.006099999882280827,
+        "normal_count": 100.0,
+        "anomaly_count": 100.0
+    },
+    "pcb2": {
+        "image_auroc": 0.5278000235557556,
+        "pixel_ap": 0.002400000113993883,
+        "normal_count": 100.0,
+        "anomaly_count": 100.0
+    },
+    "pcb3": {
+        "image_auroc": 0.5141000151634216,
+        "pixel_ap": 0.003599999938160181,
+        "normal_count": 101.0,
+        "anomaly_count": 100.0
+    },
+    "pcb4": {
+        "image_auroc": 0.36640000343322754,
+        "pixel_ap": 0.007899999618530273,
+        "normal_count": 101.0,
+        "anomaly_count": 100.0
+    },
+    "pipe_fryum": {
+        "image_auroc": 0.49880000948905945,
+        "pixel_ap": 0.011300000362098217,
+        "normal_count": 50.0,
+        "anomaly_count": 100.0
+    }
+}

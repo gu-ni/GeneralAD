@@ -1,0 +1,32 @@
+{
+    "viaduct_17 cherry": {
+        "image_auroc": 0.5264000296592712,
+        "pixel_ap": 0.0010000000474974513,
+        "normal_count": 275.0,
+        "anomaly_count": 112.0
+    },
+    "viaduct_39 self-tapping bolt": {
+        "image_auroc": 0.5098999738693237,
+        "pixel_ap": 0.007199999876320362,
+        "normal_count": 140.0,
+        "anomaly_count": 140.0
+    },
+    "viaduct_27 L-fitting": {
+        "image_auroc": 0.5212000012397766,
+        "pixel_ap": 0.0013000000035390258,
+        "normal_count": 50.0,
+        "anomaly_count": 16.0
+    },
+    "viaduct_47 mains tester": {
+        "image_auroc": 0.4830000102519989,
+        "pixel_ap": 9.999999747378752e-05,
+        "normal_count": 50.0,
+        "anomaly_count": 20.0
+    },
+    "viaduct_20 tea bag": {
+        "image_auroc": 0.47690001130104065,
+        "pixel_ap": 0.004800000227987766,
+        "normal_count": 140.0,
+        "anomaly_count": 90.0
+    }
+}

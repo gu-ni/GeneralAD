@@ -1,0 +1,62 @@
+{
+    "viaduct_35 pink tablet": {
+        "image_auroc": 0.47769999504089355,
+        "pixel_ap": 0.05209999904036522,
+        "normal_count": 50.0,
+        "anomaly_count": 60.0
+    },
+    "continual_ad_Cup": {
+        "image_auroc": 0.21279999613761902,
+        "pixel_ap": 0.005799999926239252,
+        "normal_count": 517.0,
+        "anomaly_count": 488.0
+    },
+    "viaduct_23 pipe clamp": {
+        "image_auroc": 0.5494999885559082,
+        "pixel_ap": 0.010599999688565731,
+        "normal_count": 50.0,
+        "anomaly_count": 19.0
+    },
+    "visa_pcb2": {
+        "image_auroc": 0.47130000591278076,
+        "pixel_ap": 0.0017000000225380063,
+        "normal_count": 100.0,
+        "anomaly_count": 90.0
+    },
+    "continual_ad_Food-container": {
+        "image_auroc": 0.4505000114440918,
+        "pixel_ap": 0.02070000022649765,
+        "normal_count": 520.0,
+        "anomaly_count": 489.0
+    },
+    "visa_capsules": {
+        "image_auroc": 0.4397999942302704,
+        "pixel_ap": 0.004100000020116568,
+        "normal_count": 60.0,
+        "anomaly_count": 90.0
+    },
+    "viaduct_11 ring cable lug": {
+        "image_auroc": 0.4505999982357025,
+        "pixel_ap": 0.003000000026077032,
+        "normal_count": 140.0,
+        "anomaly_count": 56.0
+    },
+    "viaduct_00 shredded corn rough": {
+        "image_auroc": 0.5095999836921692,
+        "pixel_ap": 0.021199999377131462,
+        "normal_count": 80.0,
+        "anomaly_count": 130.0
+    },
+    "real_iad_bottle_cap": {
+        "image_auroc": 0.4690999984741211,
+        "pixel_ap": 0.0005000000237487257,
+        "normal_count": 3374.0,
+        "anomaly_count": 1621.0
+    },
+    "real_iad_sim_card_set": {
+        "image_auroc": 0.6442000269889832,
+        "pixel_ap": 0.0017000000225380063,
+        "normal_count": 2951.0,
+        "anomaly_count": 2059.0
+    }
+}

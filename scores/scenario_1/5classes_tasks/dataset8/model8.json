@@ -1,0 +1,32 @@
+{
+    "mvtec_toothbrush": {
+        "image_auroc": 0.33329999446868896,
+        "pixel_ap": 0.013299999758601189,
+        "normal_count": 12.0,
+        "anomaly_count": 20.0
+    },
+    "continual_ad_Spoon": {
+        "image_auroc": 0.39250001311302185,
+        "pixel_ap": 0.0034000000450760126,
+        "normal_count": 527.0,
+        "anomaly_count": 517.0
+    },
+    "viaduct_11 ring cable lug": {
+        "image_auroc": 0.48649999499320984,
+        "pixel_ap": 0.019700000062584877,
+        "normal_count": 140.0,
+        "anomaly_count": 56.0
+    },
+    "real_iad_button_battery": {
+        "image_auroc": 0.4198000133037567,
+        "pixel_ap": 0.0035000001080334187,
+        "normal_count": 2840.0,
+        "anomaly_count": 2140.0
+    },
+    "real_iad_vcpill": {
+        "image_auroc": 0.4212000072002411,
+        "pixel_ap": 0.004900000058114529,
+        "normal_count": 3545.0,
+        "anomaly_count": 1460.0
+    }
+}

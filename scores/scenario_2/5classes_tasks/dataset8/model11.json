@@ -1,0 +1,32 @@
+{
+    "continual_ad_Toothpaste": {
+        "image_auroc": 0.5800999999046326,
+        "pixel_ap": 0.014600000344216824,
+        "normal_count": 513.0,
+        "anomaly_count": 516.0
+    },
+    "viaduct_27 L-fitting": {
+        "image_auroc": 0.6974999904632568,
+        "pixel_ap": 0.004999999888241291,
+        "normal_count": 50.0,
+        "anomaly_count": 16.0
+    },
+    "viaduct_24 pan screw": {
+        "image_auroc": 0.598800003528595,
+        "pixel_ap": 0.010099999606609344,
+        "normal_count": 130.0,
+        "anomaly_count": 100.0
+    },
+    "viaduct_07 d-sub connector": {
+        "image_auroc": 0.453900009393692,
+        "pixel_ap": 0.00139999995008111,
+        "normal_count": 140.0,
+        "anomaly_count": 38.0
+    },
+    "real_iad_rolled_strip_base": {
+        "image_auroc": 0.4625999927520752,
+        "pixel_ap": 0.0027000000700354576,
+        "normal_count": 2515.0,
+        "anomaly_count": 2515.0
+    }
+}

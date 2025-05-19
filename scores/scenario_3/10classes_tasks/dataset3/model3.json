@@ -1,0 +1,62 @@
+{
+    "viaduct_11 ring cable lug": {
+        "image_auroc": 0.4797999858856201,
+        "pixel_ap": 0.002400000113993883,
+        "normal_count": 140.0,
+        "anomaly_count": 56.0
+    },
+    "viaduct_17 cherry": {
+        "image_auroc": 0.5630999803543091,
+        "pixel_ap": 0.0008999999845400453,
+        "normal_count": 275.0,
+        "anomaly_count": 112.0
+    },
+    "viaduct_47 mains tester": {
+        "image_auroc": 0.47200000286102295,
+        "pixel_ap": 9.999999747378752e-05,
+        "normal_count": 50.0,
+        "anomaly_count": 20.0
+    },
+    "viaduct_35 pink tablet": {
+        "image_auroc": 0.6053000092506409,
+        "pixel_ap": 0.034299999475479126,
+        "normal_count": 50.0,
+        "anomaly_count": 60.0
+    },
+    "viaduct_20 tea bag": {
+        "image_auroc": 0.44130000472068787,
+        "pixel_ap": 0.002400000113993883,
+        "normal_count": 140.0,
+        "anomaly_count": 90.0
+    },
+    "real_iad_u_block": {
+        "image_auroc": 0.4593000113964081,
+        "pixel_ap": 0.0008999999845400453,
+        "normal_count": 3766.0,
+        "anomaly_count": 1204.0
+    },
+    "real_iad_usb_adaptor": {
+        "image_auroc": 0.4643999934196472,
+        "pixel_ap": 0.0003000000142492354,
+        "normal_count": 3485.0,
+        "anomaly_count": 1510.0
+    },
+    "real_iad_wooden_beads": {
+        "image_auroc": 0.6545000076293945,
+        "pixel_ap": 0.0027000000700354576,
+        "normal_count": 3311.0,
+        "anomaly_count": 1674.0
+    },
+    "real_iad_audiojack": {
+        "image_auroc": 0.579800009727478,
+        "pixel_ap": 0.0005000000237487257,
+        "normal_count": 3744.0,
+        "anomaly_count": 1286.0
+    },
+    "real_iad_rolled_strip_base": {
+        "image_auroc": 0.5008999705314636,
+        "pixel_ap": 0.0010999999940395355,
+        "normal_count": 2515.0,
+        "anomaly_count": 2515.0
+    }
+}

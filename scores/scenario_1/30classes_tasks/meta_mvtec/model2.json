@@ -1,0 +1,50 @@
+{
+    "bottle": {
+        "image_auroc": 0.3452000021934509,
+        "pixel_ap": 0.05130000039935112,
+        "normal_count": 20.0,
+        "anomaly_count": 63.0
+    },
+    "cable": {
+        "image_auroc": 0.5138999819755554,
+        "pixel_ap": 0.03180000185966492,
+        "normal_count": 58.0,
+        "anomaly_count": 92.0
+    },
+    "capsule": {
+        "image_auroc": 0.46389999985694885,
+        "pixel_ap": 0.013799999840557575,
+        "normal_count": 23.0,
+        "anomaly_count": 109.0
+    },
+    "carpet": {
+        "image_auroc": 0.5795000195503235,
+        "pixel_ap": 0.026499999687075615,
+        "normal_count": 28.0,
+        "anomaly_count": 89.0
+    },
+    "grid": {
+        "image_auroc": 0.25060001015663147,
+        "pixel_ap": 0.01080000028014183,
+        "normal_count": 21.0,
+        "anomaly_count": 57.0
+    },
+    "hazelnut": {
+        "image_auroc": 0.3781999945640564,
+        "pixel_ap": 0.017799999564886093,
+        "normal_count": 40.0,
+        "anomaly_count": 70.0
+    },
+    "leather": {
+        "image_auroc": 0.6118000149726868,
+        "pixel_ap": 0.009499999694526196,
+        "normal_count": 32.0,
+        "anomaly_count": 92.0
+    },
+    "metal_nut": {
+        "image_auroc": 0.4535999894142151,
+        "pixel_ap": 0.09149999916553497,
+        "normal_count": 22.0,
+        "anomaly_count": 93.0
+    }
+}

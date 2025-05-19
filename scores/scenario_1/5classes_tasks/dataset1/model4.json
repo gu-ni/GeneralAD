@@ -1,0 +1,32 @@
+{
+    "continual_ad_Mango": {
+        "image_auroc": 0.8888000249862671,
+        "pixel_ap": 0.09269999712705612,
+        "normal_count": 456.0,
+        "anomaly_count": 491.0
+    },
+    "viaduct_30 valve handle blue": {
+        "image_auroc": 0.46000000834465027,
+        "pixel_ap": 0.0017000000225380063,
+        "normal_count": 50.0,
+        "anomaly_count": 14.0
+    },
+    "visa_pcb2": {
+        "image_auroc": 0.4442000091075897,
+        "pixel_ap": 0.004100000020116568,
+        "normal_count": 100.0,
+        "anomaly_count": 90.0
+    },
+    "mvtec_capsule": {
+        "image_auroc": 0.5845000147819519,
+        "pixel_ap": 0.019600000232458115,
+        "normal_count": 23.0,
+        "anomaly_count": 99.0
+    },
+    "continual_ad_Watermelon": {
+        "image_auroc": 0.5192999839782715,
+        "pixel_ap": 0.01940000057220459,
+        "normal_count": 497.0,
+        "anomaly_count": 506.0
+    }
+}

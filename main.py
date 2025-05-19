@@ -39,7 +39,7 @@ if __name__ == "__main__":
     parser.add_argument("--lr", type=float, default=0.0005, help="Learning rate")
     parser.add_argument("--lr_decay_factor", type=float, default=0.2, help="Learning rate decay factor for cosine annealing")
     parser.add_argument("--lr_adaptor", type=float, default=0.0001, help="Learning rate")
-    parser.add_argument("--hf_path", type=str, default='vit_base_patch14_dinov2.lvd142m', help="Huggingface model path")
+    parser.add_argument("--hf_path", type=str, default='vit_large_patch14_dinov2.lvd142m', help="Huggingface model path")
     parser.add_argument("--milestones", type=str, default="5", help="Scheduler milestones as a comma-separated string")
     parser.add_argument("--gamma", type=float, default=0.2, help="Scheduler gamma value")
     parser.add_argument('--data_dir', type=str, default='data/', help='Data directory where to store/find the dataset.')

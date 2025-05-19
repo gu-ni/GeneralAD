@@ -1,0 +1,62 @@
+{
+    "viaduct_30 valve handle blue": {
+        "image_auroc": 0.6456999778747559,
+        "pixel_ap": 0.0017999999690800905,
+        "normal_count": 50.0,
+        "anomaly_count": 14.0
+    },
+    "viaduct_18 raspberry": {
+        "image_auroc": 0.5317999720573425,
+        "pixel_ap": 0.01810000091791153,
+        "normal_count": 170.0,
+        "anomaly_count": 84.0
+    },
+    "continual_ad_Notebook": {
+        "image_auroc": 0.5216000080108643,
+        "pixel_ap": 0.01209999993443489,
+        "normal_count": 354.0,
+        "anomaly_count": 513.0
+    },
+    "viaduct_25 reinforcing sleeve": {
+        "image_auroc": 0.3855000138282776,
+        "pixel_ap": 0.0007999999797903001,
+        "normal_count": 50.0,
+        "anomaly_count": 11.0
+    },
+    "mvtec_transistor": {
+        "image_auroc": 0.508899986743927,
+        "pixel_ap": 0.04520000144839287,
+        "normal_count": 60.0,
+        "anomaly_count": 30.0
+    },
+    "viaduct_04 battery tray": {
+        "image_auroc": 0.5455999970436096,
+        "pixel_ap": 0.002899999963119626,
+        "normal_count": 65.0,
+        "anomaly_count": 30.0
+    },
+    "continual_ad_Mango": {
+        "image_auroc": 0.6256999969482422,
+        "pixel_ap": 0.010400000028312206,
+        "normal_count": 456.0,
+        "anomaly_count": 491.0
+    },
+    "viaduct_17 cherry": {
+        "image_auroc": 0.5293999910354614,
+        "pixel_ap": 0.002199999988079071,
+        "normal_count": 275.0,
+        "anomaly_count": 112.0
+    },
+    "continual_ad_Spoon": {
+        "image_auroc": 0.5005999803543091,
+        "pixel_ap": 0.0044999998062849045,
+        "normal_count": 527.0,
+        "anomaly_count": 517.0
+    },
+    "viaduct_32 bone pliers": {
+        "image_auroc": 0.5228000283241272,
+        "pixel_ap": 0.0006000000284984708,
+        "normal_count": 185.0,
+        "anomaly_count": 63.0
+    }
+}

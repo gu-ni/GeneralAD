@@ -1,0 +1,32 @@
+{
+    "viaduct_44 tack": {
+        "image_auroc": 0.5083000063896179,
+        "pixel_ap": 0.0027000000700354576,
+        "normal_count": 160.0,
+        "anomaly_count": 137.0
+    },
+    "viaduct_31 valve handle red": {
+        "image_auroc": 0.44999998807907104,
+        "pixel_ap": 0.0010999999940395355,
+        "normal_count": 45.0,
+        "anomaly_count": 16.0
+    },
+    "viaduct_11 ring cable lug": {
+        "image_auroc": 0.4934999942779541,
+        "pixel_ap": 0.01600000075995922,
+        "normal_count": 140.0,
+        "anomaly_count": 56.0
+    },
+    "real_iad_wooden_beads": {
+        "image_auroc": 0.6358000040054321,
+        "pixel_ap": 0.0038999998942017555,
+        "normal_count": 3311.0,
+        "anomaly_count": 1674.0
+    },
+    "real_iad_audiojack": {
+        "image_auroc": 0.5709999799728394,
+        "pixel_ap": 0.0017000000225380063,
+        "normal_count": 3744.0,
+        "anomaly_count": 1286.0
+    }
+}

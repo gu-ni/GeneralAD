@@ -1,0 +1,62 @@
+{
+    "viaduct_25 reinforcing sleeve": {
+        "image_auroc": 0.503600001335144,
+        "pixel_ap": 0.00570000009611249,
+        "normal_count": 50.0,
+        "anomaly_count": 11.0
+    },
+    "mpdd_bracket_white": {
+        "image_auroc": 0.35670000314712524,
+        "pixel_ap": 0.00039999998989515007,
+        "normal_count": 30.0,
+        "anomaly_count": 20.0
+    },
+    "viaduct_16 vibration sensor": {
+        "image_auroc": 0.6549999713897705,
+        "pixel_ap": 0.006599999964237213,
+        "normal_count": 50.0,
+        "anomaly_count": 20.0
+    },
+    "viaduct_43 paperclip": {
+        "image_auroc": 0.43389999866485596,
+        "pixel_ap": 0.03629999980330467,
+        "normal_count": 110.0,
+        "anomaly_count": 63.0
+    },
+    "viaduct_32 bone pliers": {
+        "image_auroc": 0.4510999917984009,
+        "pixel_ap": 0.00139999995008111,
+        "normal_count": 185.0,
+        "anomaly_count": 63.0
+    },
+    "viaduct_38 round pill": {
+        "image_auroc": 0.5422000288963318,
+        "pixel_ap": 0.015399999916553497,
+        "normal_count": 50.0,
+        "anomaly_count": 82.0
+    },
+    "viaduct_31 valve handle red": {
+        "image_auroc": 0.42080000042915344,
+        "pixel_ap": 0.000699999975040555,
+        "normal_count": 45.0,
+        "anomaly_count": 16.0
+    },
+    "viaduct_44 tack": {
+        "image_auroc": 0.3021000027656555,
+        "pixel_ap": 0.002400000113993883,
+        "normal_count": 160.0,
+        "anomaly_count": 137.0
+    },
+    "real_iad_pcb": {
+        "image_auroc": 0.46299999952316284,
+        "pixel_ap": 0.0027000000700354576,
+        "normal_count": 2711.0,
+        "anomaly_count": 2279.0
+    },
+    "real_iad_mounts": {
+        "image_auroc": 0.5062999725341797,
+        "pixel_ap": 0.0013000000035390258,
+        "normal_count": 3702.0,
+        "anomaly_count": 1328.0
+    }
+}

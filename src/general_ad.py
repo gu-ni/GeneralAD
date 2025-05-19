@@ -8,6 +8,7 @@ import math
 import random
 import os
 import wget
+import json
 
 # torch
 import torch
@@ -19,7 +20,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 # image processing
-from sklearn.metrics import roc_auc_score, auc
+from sklearn.metrics import roc_auc_score, auc, average_precision_score
 from scipy.ndimage import gaussian_filter
 from skimage.measure import label, regionprops
 from cv2 import getStructuringElement, MORPH_RECT, dilate
@@ -257,7 +258,7 @@ class PPT_Discriminator(nn.Module):
 
 class General_AD(pl.LightningModule):
 
-    def __init__(self, lr, lr_decay_factor, hf_path, layers_to_extract_from, hidden_dim, wd, epochs, noise_std, dsc_layers, dsc_heads, dsc_dropout, pool_size, image_size, num_fake_patches, fake_feature_type, top_k, log_pixel_metrics, smoothing_sigma, smoothing_radius):
+    def __init__(self, lr, lr_decay_factor, hf_path, layers_to_extract_from, hidden_dim, wd, epochs, noise_std, dsc_layers, dsc_heads, dsc_dropout, pool_size, image_size, num_fake_patches, fake_feature_type, top_k, log_pixel_metrics, smoothing_sigma, smoothing_radius, *args, **kwargs):
         super().__init__()
         self.save_hyperparameters()
 
@@ -299,6 +300,10 @@ class General_AD(pl.LightningModule):
         self.test_scores = []
         self.test_labels = []
         self.test_masks = []
+        self.normal_count = 0
+        self.anomaly_count = 0
+        
+        self.final_score_path = kwargs.get("final_score_path", None)
 
     def forward(self, x):
         scores = self._step(x)
@@ -500,6 +505,8 @@ class General_AD(pl.LightningModule):
         scores = self._step(images)
         self.test_scores.append(scores)
         self.test_labels.append(labels)
+        self.normal_count += (labels == 0).sum()
+        self.anomaly_count += (labels == 1).sum()
 
         if self.hparams.log_pixel_metrics:
             masks = batch[2]
@@ -604,5 +611,49 @@ class General_AD(pl.LightningModule):
         self.test_masks = []
 
 
+class GeneralADForTest(General_AD):
+    def on_test_epoch_end(self):
+        scores = torch.cat(self.test_scores, dim=0)
 
+        # image-level score 계산
+        topk_values, _ = torch.topk(scores, self.top_k, dim=1)
+        image_scores = torch.mean(topk_values, dim=1)
+        image_labels = torch.cat(self.test_labels, dim=0)
 
+        # calculate I-AUROC
+        image_auroc = roc_auc_score(image_labels.view(-1).cpu().numpy(), image_scores.view(-1).cpu().numpy())
+        # self.log('test_image_auroc', image_auroc, on_epoch=True)
+
+        pixel_ap = None
+        if self.hparams.log_pixel_metrics:
+            # pixel-level score 계산
+            masks = torch.cat(self.test_masks, dim=0)                     # shape: [B, H, W]
+            patch_scores = scores.reshape(-1, self.patches_per_side, self.patches_per_side)
+            pixel_scores = F.interpolate(
+                patch_scores.unsqueeze(1),                                # [B, 1, patch_h, patch_w]
+                size=(masks.shape[-1], masks.shape[-1]), 
+                mode='bilinear', align_corners=False
+            )                                                             # [B, 1, H, W]
+            segmentations = gaussian_filter(
+                pixel_scores.squeeze(1).cpu().detach().numpy(),           # [B, H, W]
+                sigma=self.hparams.smoothing_sigma, 
+                radius=self.hparams.smoothing_radius, 
+                axes=(1, 2)
+            )
+            # pixel-level Average Precision
+            pixel_ap = average_precision_score(masks.view(-1).cpu().numpy(), segmentations.reshape(-1))
+            # self.log('test_pixel_ap', round(pixel_ap, 4), on_epoch=True)
+        
+        self.log("image_auroc", round(image_auroc, 4), on_epoch=True)
+        if pixel_ap is not None:
+            self.log("pixel_ap", round(pixel_ap, 4), on_epoch=True)
+        self.log("normal_count", int(self.normal_count), on_epoch=True)
+        self.log("anomaly_count", int(self.anomaly_count), on_epoch=True)
+        
+        print(f"Saved test results to {self.final_score_path}")
+        
+        self.test_scores = []
+        self.test_labels = []
+        self.test_masks = []
+        self.normal_count = 0
+        self.anomaly_count = 0

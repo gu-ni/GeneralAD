@@ -398,33 +398,44 @@ class JSONDataset(data.Dataset):
         "BTAD": "/datasets/MegaInspection/non_megainspection/BTAD",
         "MPDD": "/datasets/MegaInspection/non_megainspection/MPDD"
     }
-
-    def resolve_path(self, relative_path):
-        if not relative_path:
-            return None
-        if os.path.isabs(relative_path):
-            return relative_path
-        parts = relative_path.split("/", 1)
-        if len(parts) != 2:
-            return None
-        prefix, sub_path = parts
-        root = self.dataset_root_map.get(prefix, "")
-        return os.path.normpath(os.path.join(root, sub_path))
     
-    def __init__(self, json_data, transform, mask_transform=None, train=True):
+    json_path_map = {
+        "meta_continual_ad_test_total": "continual_ad",
+        "meta_mvtec": "mvtec_anomaly_detection",
+        "meta_visa": "VisA_20220922"
+    }
+
+    def resolve_path(self, relative_path, zero_shot_category=None):
+        if zero_shot_category:
+            data_root = self.json_path_map[zero_shot_category]
+            root = self.dataset_root_map.get(data_root, "")
+            if not relative_path:
+                return None
+            if os.path.isabs(relative_path):
+                return relative_path
+            return os.path.normpath(os.path.join(root, relative_path))
+            
+        else:
+            if not relative_path:
+                return None
+            if os.path.isabs(relative_path):
+                return relative_path
+            parts = relative_path.split("/", 1)
+            if len(parts) != 2:
+                return None
+            prefix, sub_path = parts
+            root = self.dataset_root_map.get(prefix, "")
+            return os.path.normpath(os.path.join(root, sub_path))
+
+    def __init__(self, json_data, transform, mask_transform=None, train=True, zero_shot_category=None):
         self.samples = []
         self.transform = transform
         self.mask_transform = mask_transform
         
-        
-        
-        
         self.samples = []
-        self.num_all_samples = 0
         for cls_name, samples in json_data.items():
             for sample in samples:
-                self.num_all_samples += 1
-                img_path = self.resolve_path(sample["img_path"])
+                img_path = self.resolve_path(sample["img_path"], zero_shot_category)
                 anomaly = sample.get("anomaly", 0)
 
                 if train:
@@ -432,10 +443,11 @@ class JSONDataset(data.Dataset):
                         continue  # ⛔ skip abnormal sample during training
                     mask_path = ""  # not used
                 else:
-                    mask_path = self.resolve_path(sample["mask_path"]) if sample.get("mask_path") else ""
+                    mask_path = self.resolve_path(sample["mask_path"], zero_shot_category) if sample.get("mask_path") else ""
 
                 self.samples.append((img_path, mask_path, anomaly))
         
+        print(f"[INFO] Loaded {len(self.samples)} samples.")
 
     def __len__(self):
         return len(self.samples)
@@ -470,7 +482,7 @@ def prepare_loader_from_json(json_path, image_size, batch_size,
     
     json_path = os.path.join("/workspace/meta_files", f"{json_path}.json")
     with open(json_path, "r") as f:
-            data_json = json.load(f)
+        data_json = json.load(f)
     
     if task_id is not None:
         sub_data_idx = f"task_{task_id}"
@@ -490,3 +502,24 @@ def prepare_loader_from_json(json_path, image_size, batch_size,
     )
 
     return train_loader
+
+
+def prepare_loader_from_json_by_chunk(json_data, image_size=336, batch_size=8, num_workers=2, train=False,
+                                      zero_shot_category=None):
+    transform = transforms.Compose([
+        transforms.Resize((image_size, image_size), Image.LANCZOS),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
+    ])
+
+    mask_transform = transforms.Compose([
+        transforms.Resize((image_size, image_size), Image.LANCZOS),
+        transforms.ToTensor()
+    ])
+    
+    dataset = JSONDataset(
+        json_data, transform, mask_transform, train, zero_shot_category
+    )
+    loader = data.DataLoader(dataset, batch_size=batch_size, shuffle=train, num_workers=num_workers, pin_memory=True)
+    
+    return loader

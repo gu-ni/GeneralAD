@@ -1,0 +1,32 @@
+{
+    "continual_ad_Cup": {
+        "image_auroc": 0.38600000739097595,
+        "pixel_ap": 0.006599999964237213,
+        "normal_count": 517.0,
+        "anomaly_count": 488.0
+    },
+    "viaduct_41 white tablet": {
+        "image_auroc": 0.5210000276565552,
+        "pixel_ap": 0.010200000368058681,
+        "normal_count": 50.0,
+        "anomaly_count": 100.0
+    },
+    "btad_01": {
+        "image_auroc": 0.4359000027179718,
+        "pixel_ap": 0.04439999908208847,
+        "normal_count": 21.0,
+        "anomaly_count": 39.0
+    },
+    "real_iad_plastic_nut": {
+        "image_auroc": 0.5418000221252441,
+        "pixel_ap": 0.0005000000237487257,
+        "normal_count": 3754.0,
+        "anomaly_count": 1236.0
+    },
+    "real_iad_toy_brick": {
+        "image_auroc": 0.5037999749183655,
+        "pixel_ap": 0.0012000000569969416,
+        "normal_count": 3464.0,
+        "anomaly_count": 1526.0
+    }
+}

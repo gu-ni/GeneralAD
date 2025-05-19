@@ -1,0 +1,32 @@
+{
+    "continual_ad_Watermelon": {
+        "image_auroc": 0.43209999799728394,
+        "pixel_ap": 0.0052999998442828655,
+        "normal_count": 497.0,
+        "anomaly_count": 506.0
+    },
+    "viaduct_20 tea bag": {
+        "image_auroc": 0.57669997215271,
+        "pixel_ap": 0.00570000009611249,
+        "normal_count": 140.0,
+        "anomaly_count": 90.0
+    },
+    "viaduct_02 shredded corn fine": {
+        "image_auroc": 0.5964000225067139,
+        "pixel_ap": 0.03750000149011612,
+        "normal_count": 110.0,
+        "anomaly_count": 133.0
+    },
+    "viaduct_11 ring cable lug": {
+        "image_auroc": 0.4957999885082245,
+        "pixel_ap": 0.009399999864399433,
+        "normal_count": 140.0,
+        "anomaly_count": 56.0
+    },
+    "real_iad_zipper": {
+        "image_auroc": 0.6316999793052673,
+        "pixel_ap": 0.01140000019222498,
+        "normal_count": 2664.0,
+        "anomaly_count": 2321.0
+    }
+}

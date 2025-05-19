@@ -1,0 +1,32 @@
+{
+    "viaduct_35 pink tablet": {
+        "image_auroc": 0.48069998621940613,
+        "pixel_ap": 0.03889999911189079,
+        "normal_count": 50.0,
+        "anomaly_count": 60.0
+    },
+    "viaduct_13 socket housing": {
+        "image_auroc": 0.48170000314712524,
+        "pixel_ap": 0.008899999782443047,
+        "normal_count": 65.0,
+        "anomaly_count": 52.0
+    },
+    "continual_ad_Notebook": {
+        "image_auroc": 0.5410000085830688,
+        "pixel_ap": 0.012600000016391277,
+        "normal_count": 354.0,
+        "anomaly_count": 513.0
+    },
+    "btad_02": {
+        "image_auroc": 0.6674000024795532,
+        "pixel_ap": 0.20029999315738678,
+        "normal_count": 30.0,
+        "anomaly_count": 190.0
+    },
+    "real_iad_bottle_cap": {
+        "image_auroc": 0.459199994802475,
+        "pixel_ap": 0.0005000000237487257,
+        "normal_count": 3374.0,
+        "anomaly_count": 1621.0
+    }
+}

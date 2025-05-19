@@ -1,0 +1,74 @@
+{
+    "candle": {
+        "image_auroc": 0.3483999967575073,
+        "pixel_ap": 0.003700000001117587,
+        "normal_count": 100.0,
+        "anomaly_count": 100.0
+    },
+    "capsules": {
+        "image_auroc": 0.46779999136924744,
+        "pixel_ap": 0.004100000020116568,
+        "normal_count": 60.0,
+        "anomaly_count": 100.0
+    },
+    "cashew": {
+        "image_auroc": 0.48399999737739563,
+        "pixel_ap": 0.19509999454021454,
+        "normal_count": 50.0,
+        "anomaly_count": 100.0
+    },
+    "chewinggum": {
+        "image_auroc": 0.4603999853134155,
+        "pixel_ap": 0.28679999709129333,
+        "normal_count": 50.0,
+        "anomaly_count": 100.0
+    },
+    "fryum": {
+        "image_auroc": 0.3499999940395355,
+        "pixel_ap": 0.06530000269412994,
+        "normal_count": 50.0,
+        "anomaly_count": 100.0
+    },
+    "macaroni1": {
+        "image_auroc": 0.7416999936103821,
+        "pixel_ap": 0.002199999988079071,
+        "normal_count": 100.0,
+        "anomaly_count": 100.0
+    },
+    "macaroni2": {
+        "image_auroc": 0.6363999843597412,
+        "pixel_ap": 0.002199999988079071,
+        "normal_count": 100.0,
+        "anomaly_count": 100.0
+    },
+    "pcb1": {
+        "image_auroc": 0.2865999937057495,
+        "pixel_ap": 0.004100000020116568,
+        "normal_count": 100.0,
+        "anomaly_count": 100.0
+    },
+    "pcb2": {
+        "image_auroc": 0.61080002784729,
+        "pixel_ap": 0.002199999988079071,
+        "normal_count": 100.0,
+        "anomaly_count": 100.0
+    },
+    "pcb3": {
+        "image_auroc": 0.504800021648407,
+        "pixel_ap": 0.0017000000225380063,
+        "normal_count": 101.0,
+        "anomaly_count": 100.0
+    },
+    "pcb4": {
+        "image_auroc": 0.6471999883651733,
+        "pixel_ap": 0.010499999858438969,
+        "normal_count": 101.0,
+        "anomaly_count": 100.0
+    },
+    "pipe_fryum": {
+        "image_auroc": 0.5085999965667725,
+        "pixel_ap": 0.11020000278949738,
+        "normal_count": 50.0,
+        "anomaly_count": 100.0
+    }
+}

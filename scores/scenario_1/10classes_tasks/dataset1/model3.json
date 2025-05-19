@@ -1,0 +1,62 @@
+{
+    "continual_ad_Glasses-case": {
+        "image_auroc": 0.5041000247001648,
+        "pixel_ap": 0.00559999980032444,
+        "normal_count": 501.0,
+        "anomaly_count": 549.0
+    },
+    "continual_ad_Candy": {
+        "image_auroc": 0.4733000099658966,
+        "pixel_ap": 0.0272000003606081,
+        "normal_count": 517.0,
+        "anomaly_count": 490.0
+    },
+    "viaduct_36 redon needle": {
+        "image_auroc": 0.5943999886512756,
+        "pixel_ap": 0.002899999963119626,
+        "normal_count": 180.0,
+        "anomaly_count": 63.0
+    },
+    "viaduct_29 threaded fitting": {
+        "image_auroc": 0.5019999742507935,
+        "pixel_ap": 0.003000000026077032,
+        "normal_count": 90.0,
+        "anomaly_count": 62.0
+    },
+    "mvtec_toothbrush": {
+        "image_auroc": 0.3833000063896179,
+        "pixel_ap": 0.03889999911189079,
+        "normal_count": 12.0,
+        "anomaly_count": 20.0
+    },
+    "mvtec_cable": {
+        "image_auroc": 0.5906000137329102,
+        "pixel_ap": 0.06759999692440033,
+        "normal_count": 58.0,
+        "anomaly_count": 82.0
+    },
+    "real_iad_button_battery": {
+        "image_auroc": 0.4936999976634979,
+        "pixel_ap": 0.008999999612569809,
+        "normal_count": 2840.0,
+        "anomaly_count": 2140.0
+    },
+    "real_iad_mounts": {
+        "image_auroc": 0.48429998755455017,
+        "pixel_ap": 0.0012000000569969416,
+        "normal_count": 3702.0,
+        "anomaly_count": 1328.0
+    },
+    "real_iad_phone_battery": {
+        "image_auroc": 0.5525000095367432,
+        "pixel_ap": 0.0035000001080334187,
+        "normal_count": 3440.0,
+        "anomaly_count": 1540.0
+    },
+    "real_iad_fire_hood": {
+        "image_auroc": 0.4754999876022339,
+        "pixel_ap": 0.00139999995008111,
+        "normal_count": 3665.0,
+        "anomaly_count": 1340.0
+    }
+}

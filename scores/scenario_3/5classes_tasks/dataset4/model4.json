@@ -1,0 +1,32 @@
+{
+    "mpdd_bracket_white": {
+        "image_auroc": 0.28999999165534973,
+        "pixel_ap": 0.004699999932199717,
+        "normal_count": 30.0,
+        "anomaly_count": 20.0
+    },
+    "viaduct_48 saw blade": {
+        "image_auroc": 0.4269999861717224,
+        "pixel_ap": 0.00039999998989515007,
+        "normal_count": 50.0,
+        "anomaly_count": 20.0
+    },
+    "mpdd_metal_plate": {
+        "image_auroc": 0.44769999384880066,
+        "pixel_ap": 0.23720000684261322,
+        "normal_count": 26.0,
+        "anomaly_count": 61.0
+    },
+    "viaduct_35 pink tablet": {
+        "image_auroc": 0.478300005197525,
+        "pixel_ap": 0.031599998474121094,
+        "normal_count": 50.0,
+        "anomaly_count": 60.0
+    },
+    "real_iad_u_block": {
+        "image_auroc": 0.5600000023841858,
+        "pixel_ap": 0.002400000113993883,
+        "normal_count": 3766.0,
+        "anomaly_count": 1204.0
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "continual_ad_Glasses-case": {
+        "image_auroc": 0.4575999975204468,
+        "pixel_ap": 0.002199999988079071,
+        "normal_count": 501.0,
+        "anomaly_count": 549.0
+    },
+    "continual_ad_Candy": {
+        "image_auroc": 0.33500000834465027,
+        "pixel_ap": 0.003700000001117587,
+        "normal_count": 517.0,
+        "anomaly_count": 490.0
+    },
+    "viaduct_36 redon needle": {
+        "image_auroc": 0.5062000155448914,
+        "pixel_ap": 0.0015999999595806003,
+        "normal_count": 180.0,
+        "anomaly_count": 63.0
+    },
+    "viaduct_29 threaded fitting": {
+        "image_auroc": 0.5468000173568726,
+        "pixel_ap": 0.0020000000949949026,
+        "normal_count": 90.0,
+        "anomaly_count": 62.0
+    },
+    "mvtec_toothbrush": {
+        "image_auroc": 0.4124999940395355,
+        "pixel_ap": 0.013500000350177288,
+        "normal_count": 12.0,
+        "anomaly_count": 20.0
+    },
+    "mvtec_cable": {
+        "image_auroc": 0.5339000225067139,
+        "pixel_ap": 0.026200000196695328,
+        "normal_count": 58.0,
+        "anomaly_count": 82.0
+    },
+    "real_iad_button_battery": {
+        "image_auroc": 0.4950999915599823,
+        "pixel_ap": 0.005200000014156103,
+        "normal_count": 2840.0,
+        "anomaly_count": 2140.0
+    },
+    "real_iad_mounts": {
+        "image_auroc": 0.5202999711036682,
+        "pixel_ap": 0.0010000000474974513,
+        "normal_count": 3702.0,
+        "anomaly_count": 1328.0
+    }
+}

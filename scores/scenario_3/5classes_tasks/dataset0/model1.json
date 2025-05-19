@@ -1,0 +1,350 @@
+{
+    "viaduct_46 damper small": {
+        "image_auroc": 0.6980999708175659,
+        "pixel_ap": 0.06289999932050705,
+        "normal_count": 65.0,
+        "anomaly_count": 48.0
+    },
+    "viaduct_36 redon needle": {
+        "image_auroc": 0.6513000130653381,
+        "pixel_ap": 0.011099999770522118,
+        "normal_count": 180.0,
+        "anomaly_count": 63.0
+    },
+    "viaduct_13 socket housing": {
+        "image_auroc": 0.4837000072002411,
+        "pixel_ap": 0.011099999770522118,
+        "normal_count": 65.0,
+        "anomaly_count": 52.0
+    },
+    "viaduct_04 battery tray": {
+        "image_auroc": 0.5421000123023987,
+        "pixel_ap": 0.004100000020116568,
+        "normal_count": 65.0,
+        "anomaly_count": 30.0
+    },
+    "viaduct_15 terminal block B": {
+        "image_auroc": 0.4584999978542328,
+        "pixel_ap": 0.0066999997943639755,
+        "normal_count": 65.0,
+        "anomaly_count": 50.0
+    },
+    "viaduct_37 retractor": {
+        "image_auroc": 0.5249000191688538,
+        "pixel_ap": 0.016599999740719795,
+        "normal_count": 180.0,
+        "anomaly_count": 65.0
+    },
+    "viaduct_02 shredded corn fine": {
+        "image_auroc": 0.5081999897956848,
+        "pixel_ap": 0.044599998742341995,
+        "normal_count": 110.0,
+        "anomaly_count": 133.0
+    },
+    "viaduct_26 hose screw fitting": {
+        "image_auroc": 0.3758000135421753,
+        "pixel_ap": 0.008100000210106373,
+        "normal_count": 50.0,
+        "anomaly_count": 19.0
+    },
+    "viaduct_29 threaded fitting": {
+        "image_auroc": 0.5562999844551086,
+        "pixel_ap": 0.03290000185370445,
+        "normal_count": 90.0,
+        "anomaly_count": 62.0
+    },
+    "viaduct_23 pipe clamp": {
+        "image_auroc": 0.34630000591278076,
+        "pixel_ap": 0.017899999395012856,
+        "normal_count": 50.0,
+        "anomaly_count": 19.0
+    },
+    "viaduct_18 raspberry": {
+        "image_auroc": 0.49720001220703125,
+        "pixel_ap": 0.07360000163316727,
+        "normal_count": 170.0,
+        "anomaly_count": 84.0
+    },
+    "viaduct_33 drill": {
+        "image_auroc": 0.5622000098228455,
+        "pixel_ap": 0.065700002014637,
+        "normal_count": 180.0,
+        "anomaly_count": 138.0
+    },
+    "viaduct_09 joystick": {
+        "image_auroc": 0.6299999952316284,
+        "pixel_ap": 0.014600000344216824,
+        "normal_count": 65.0,
+        "anomaly_count": 41.0
+    },
+    "viaduct_03 3-pole socket housing": {
+        "image_auroc": 0.46810001134872437,
+        "pixel_ap": 0.05689999833703041,
+        "normal_count": 110.0,
+        "anomaly_count": 134.0
+    },
+    "viaduct_34 oblong pill": {
+        "image_auroc": 0.428600013256073,
+        "pixel_ap": 0.02800000086426735,
+        "normal_count": 105.0,
+        "anomaly_count": 136.0
+    },
+    "viaduct_10 PCB": {
+        "image_auroc": 0.5501999855041504,
+        "pixel_ap": 0.004000000189989805,
+        "normal_count": 50.0,
+        "anomaly_count": 45.0
+    },
+    "viaduct_40 surgical mask": {
+        "image_auroc": 0.5834000110626221,
+        "pixel_ap": 0.0010000000474974513,
+        "normal_count": 105.0,
+        "anomaly_count": 123.0
+    },
+    "viaduct_05 cable end sleeve": {
+        "image_auroc": 0.3946000039577484,
+        "pixel_ap": 0.009200000204145908,
+        "normal_count": 210.0,
+        "anomaly_count": 40.0
+    },
+    "viaduct_12 rotary encoder": {
+        "image_auroc": 0.4357999861240387,
+        "pixel_ap": 0.015399999916553497,
+        "normal_count": 50.0,
+        "anomaly_count": 19.0
+    },
+    "viaduct_42 aluminium plate": {
+        "image_auroc": 0.6359999775886536,
+        "pixel_ap": 0.03359999880194664,
+        "normal_count": 20.0,
+        "anomaly_count": 150.0
+    },
+    "viaduct_45 damper large": {
+        "image_auroc": 0.557699978351593,
+        "pixel_ap": 0.16019999980926514,
+        "normal_count": 65.0,
+        "anomaly_count": 40.0
+    },
+    "viaduct_00 shredded corn rough": {
+        "image_auroc": 0.6294000148773193,
+        "pixel_ap": 0.06440000236034393,
+        "normal_count": 80.0,
+        "anomaly_count": 130.0
+    },
+    "viaduct_19 strawberry": {
+        "image_auroc": 0.6908000111579895,
+        "pixel_ap": 0.2240999937057495,
+        "normal_count": 175.0,
+        "anomaly_count": 135.0
+    },
+    "viaduct_14 terminal block A": {
+        "image_auroc": 0.5066999793052673,
+        "pixel_ap": 0.004699999932199717,
+        "normal_count": 105.0,
+        "anomaly_count": 75.0
+    },
+    "viaduct_28 key": {
+        "image_auroc": 0.2992999851703644,
+        "pixel_ap": 0.052299998700618744,
+        "normal_count": 90.0,
+        "anomaly_count": 30.0
+    },
+    "viaduct_21 cylinder screw": {
+        "image_auroc": 0.476500004529953,
+        "pixel_ap": 0.00839999970048666,
+        "normal_count": 180.0,
+        "anomaly_count": 22.0
+    },
+    "viaduct_22 device box": {
+        "image_auroc": 0.49000000953674316,
+        "pixel_ap": 0.0007999999797903001,
+        "normal_count": 50.0,
+        "anomaly_count": 36.0
+    },
+    "viaduct_07 d-sub connector": {
+        "image_auroc": 0.4781999886035919,
+        "pixel_ap": 0.0012000000569969416,
+        "normal_count": 140.0,
+        "anomaly_count": 38.0
+    },
+    "viaduct_01 shredded corn medium": {
+        "image_auroc": 0.5174000263214111,
+        "pixel_ap": 0.029999999329447746,
+        "normal_count": 185.0,
+        "anomaly_count": 95.0
+    },
+    "viaduct_41 white tablet": {
+        "image_auroc": 0.44440001249313354,
+        "pixel_ap": 0.02239999920129776,
+        "normal_count": 50.0,
+        "anomaly_count": 100.0
+    },
+    "viaduct_06 coaxial t-adapter": {
+        "image_auroc": 0.5734999775886536,
+        "pixel_ap": 0.012500000186264515,
+        "normal_count": 105.0,
+        "anomaly_count": 14.0
+    },
+    "viaduct_24 pan screw": {
+        "image_auroc": 0.5357999801635742,
+        "pixel_ap": 0.00800000037997961,
+        "normal_count": 130.0,
+        "anomaly_count": 100.0
+    },
+    "btad_02": {
+        "image_auroc": 0.7311999797821045,
+        "pixel_ap": 0.34139999747276306,
+        "normal_count": 30.0,
+        "anomaly_count": 190.0
+    },
+    "btad_03": {
+        "image_auroc": 0.6807000041007996,
+        "pixel_ap": 0.120899997651577,
+        "normal_count": 400.0,
+        "anomaly_count": 31.0
+    },
+    "mpdd_connector": {
+        "image_auroc": 0.791700005531311,
+        "pixel_ap": 0.013399999588727951,
+        "normal_count": 30.0,
+        "anomaly_count": 4.0
+    },
+    "mpdd_tubes": {
+        "image_auroc": 0.3203999996185303,
+        "pixel_ap": 0.022299999371170998,
+        "normal_count": 32.0,
+        "anomaly_count": 59.0
+    },
+    "mpdd_bracket_brown": {
+        "image_auroc": 0.3846000134944916,
+        "pixel_ap": 0.04529999941587448,
+        "normal_count": 26.0,
+        "anomaly_count": 41.0
+    },
+    "mpdd_bracket_black": {
+        "image_auroc": 0.3133000135421753,
+        "pixel_ap": 0.0032999999821186066,
+        "normal_count": 32.0,
+        "anomaly_count": 37.0
+    },
+    "real_iad_sim_card_set": {
+        "image_auroc": 0.4821999967098236,
+        "pixel_ap": 0.002300000051036477,
+        "normal_count": 2951.0,
+        "anomaly_count": 2059.0
+    },
+    "real_iad_terminalblock": {
+        "image_auroc": 0.5037999749183655,
+        "pixel_ap": 0.002400000113993883,
+        "normal_count": 3032.0,
+        "anomaly_count": 1998.0
+    },
+    "real_iad_switch": {
+        "image_auroc": 0.5432999730110168,
+        "pixel_ap": 0.006300000008195639,
+        "normal_count": 3046.0,
+        "anomaly_count": 1984.0
+    },
+    "real_iad_bottle_cap": {
+        "image_auroc": 0.554099977016449,
+        "pixel_ap": 0.04839999973773956,
+        "normal_count": 3374.0,
+        "anomaly_count": 1621.0
+    },
+    "real_iad_transistor1": {
+        "image_auroc": 0.5529000163078308,
+        "pixel_ap": 0.0142000000923872,
+        "normal_count": 2873.0,
+        "anomaly_count": 2107.0
+    },
+    "real_iad_phone_battery": {
+        "image_auroc": 0.5228999853134155,
+        "pixel_ap": 0.00430000014603138,
+        "normal_count": 3440.0,
+        "anomaly_count": 1540.0
+    },
+    "real_iad_zipper": {
+        "image_auroc": 0.5339999794960022,
+        "pixel_ap": 0.04230000078678131,
+        "normal_count": 2664.0,
+        "anomaly_count": 2321.0
+    },
+    "real_iad_usb": {
+        "image_auroc": 0.4690000116825104,
+        "pixel_ap": 0.0026000000070780516,
+        "normal_count": 3286.0,
+        "anomaly_count": 1744.0
+    },
+    "real_iad_end_cap": {
+        "image_auroc": 0.44190001487731934,
+        "pixel_ap": 0.0019000000320374966,
+        "normal_count": 2817.0,
+        "anomaly_count": 2173.0
+    },
+    "real_iad_button_battery": {
+        "image_auroc": 0.4758000075817108,
+        "pixel_ap": 0.014800000004470348,
+        "normal_count": 2840.0,
+        "anomaly_count": 2140.0
+    },
+    "real_iad_vcpill": {
+        "image_auroc": 0.6083999872207642,
+        "pixel_ap": 0.06430000066757202,
+        "normal_count": 3545.0,
+        "anomaly_count": 1460.0
+    },
+    "real_iad_woodstick": {
+        "image_auroc": 0.6330000162124634,
+        "pixel_ap": 0.039400000125169754,
+        "normal_count": 3922.0,
+        "anomaly_count": 1063.0
+    },
+    "real_iad_porcelain_doll": {
+        "image_auroc": 0.5358999967575073,
+        "pixel_ap": 0.0017000000225380063,
+        "normal_count": 3735.0,
+        "anomaly_count": 1245.0
+    },
+    "real_iad_regulator": {
+        "image_auroc": 0.5605000257492065,
+        "pixel_ap": 0.0013000000035390258,
+        "normal_count": 4010.0,
+        "anomaly_count": 1070.0
+    },
+    "real_iad_fire_hood": {
+        "image_auroc": 0.4675999879837036,
+        "pixel_ap": 0.002400000113993883,
+        "normal_count": 3665.0,
+        "anomaly_count": 1340.0
+    },
+    "real_iad_plastic_plug": {
+        "image_auroc": 0.4758000075817108,
+        "pixel_ap": 0.0012000000569969416,
+        "normal_count": 3566.0,
+        "anomaly_count": 1409.0
+    },
+    "real_iad_tape": {
+        "image_auroc": 0.5947999954223633,
+        "pixel_ap": 0.05990000069141388,
+        "normal_count": 3647.0,
+        "anomaly_count": 1433.0
+    },
+    "real_iad_toy": {
+        "image_auroc": 0.4778999984264374,
+        "pixel_ap": 0.002400000113993883,
+        "normal_count": 2825.0,
+        "anomaly_count": 2180.0
+    },
+    "real_iad_mint": {
+        "image_auroc": 0.4230000078678131,
+        "pixel_ap": 0.0017000000225380063,
+        "normal_count": 3196.0,
+        "anomaly_count": 2089.0
+    },
+    "real_iad_toy_brick": {
+        "image_auroc": 0.5195000171661377,
+        "pixel_ap": 0.00570000009611249,
+        "normal_count": 3464.0,
+        "anomaly_count": 1526.0
+    }
+}

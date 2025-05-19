@@ -1,0 +1,32 @@
+{
+    "continual_ad_Energy-bar": {
+        "image_auroc": 0.4668999910354614,
+        "pixel_ap": 0.07280000299215317,
+        "normal_count": 329.0,
+        "anomaly_count": 542.0
+    },
+    "continual_ad_Dollar": {
+        "image_auroc": 0.5268999934196472,
+        "pixel_ap": 0.032999999821186066,
+        "normal_count": 391.0,
+        "anomaly_count": 494.0
+    },
+    "viaduct_39 self-tapping bolt": {
+        "image_auroc": 0.5730999708175659,
+        "pixel_ap": 0.010999999940395355,
+        "normal_count": 140.0,
+        "anomaly_count": 140.0
+    },
+    "continual_ad_Candy": {
+        "image_auroc": 0.16949999332427979,
+        "pixel_ap": 0.0071000000461936,
+        "normal_count": 517.0,
+        "anomaly_count": 490.0
+    },
+    "viaduct_38 round pill": {
+        "image_auroc": 0.5282999873161316,
+        "pixel_ap": 0.00930000003427267,
+        "normal_count": 50.0,
+        "anomaly_count": 82.0
+    }
+}

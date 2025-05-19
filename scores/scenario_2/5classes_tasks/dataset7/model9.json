@@ -1,0 +1,32 @@
+{
+    "continual_ad_Eraser": {
+        "image_auroc": 0.5773000121116638,
+        "pixel_ap": 0.027300000190734863,
+        "normal_count": 458.0,
+        "anomaly_count": 508.0
+    },
+    "viaduct_47 mains tester": {
+        "image_auroc": 0.5040000081062317,
+        "pixel_ap": 0.000699999975040555,
+        "normal_count": 50.0,
+        "anomaly_count": 20.0
+    },
+    "continual_ad_Egg": {
+        "image_auroc": 0.5647000074386597,
+        "pixel_ap": 0.1185000017285347,
+        "normal_count": 662.0,
+        "anomaly_count": 491.0
+    },
+    "viaduct_08 ethernet connector": {
+        "image_auroc": 0.42399999499320984,
+        "pixel_ap": 0.03189999982714653,
+        "normal_count": 50.0,
+        "anomaly_count": 30.0
+    },
+    "real_iad_usb": {
+        "image_auroc": 0.42239999771118164,
+        "pixel_ap": 0.00279999990016222,
+        "normal_count": 3286.0,
+        "anomaly_count": 1744.0
+    }
+}
